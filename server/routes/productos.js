@@ -1,9 +1,17 @@
-const express = require('express');
-const router = express.Router();
-const Database = require('better-sqlite3');
+// server/routes/productos.js
+import path from 'path';
+import { fileURLToPath } from 'url';
+import Database from 'better-sqlite3';
 
-// Conexión a la base de datos
-const db = new Database('./db/almacen.db');
+// Necesario para __dirname en ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Construye la ruta completa hacia almacen.db
+const dbPath = path.join(__dirname, '../db/almacen.db');
+console.log('Ruta base de datos:', dbPath); // Verifica que sea la correcta
+
+const db = new Database(dbPath);
 
 // Ruta para obtener todos los productos con almacén y ubicaciones
 router.get('/', (req, res) => {
