@@ -40,7 +40,7 @@ export default function Productos() {
 
   return (
     <div className="p-4 container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Productos</h1>
+      <h1 className="text-2xl font-bold mb-4 text-gray-900">Productos</h1>
 
       {error && <p className="text-red-500">{error}</p>}
 
@@ -48,19 +48,19 @@ export default function Productos() {
         <input
           type="text"
           placeholder="Buscar por nombre..."
-          className="border rounded px-3 py-2 w-full md:w-1/2"
+          className="border rounded px-3 py-2 w-full md:w-1/2 bg-white text-gray-900"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
         />
 
         <select
-          className="border rounded px-3 py-2 w-full md:w-1/3"
+          className="border rounded px-3 py-2 w-full md:w-1/3 bg-white text-gray-900"
           value={almacenFiltro}
           onChange={(e) => setAlmacenFiltro(e.target.value)}
         >
           <option value="">Todos los almacenes</option>
           {almacenesUnicos.map((nombre) => (
-            <option key={nombre} value={nombre}>
+            <option key={nombre} value={nombre} className="bg-white text-gray-900">
               {nombre}
             </option>
           ))}
@@ -69,7 +69,7 @@ export default function Productos() {
 
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/3">
-          <ul className="border rounded p-4 shadow max-h-[500px] overflow-y-auto">
+          <ul className="border rounded p-4 shadow max-h-[500px] overflow-y-auto bg-white text-gray-900">
             {productosFiltrados.map((producto) => (
               <li
                 key={producto.id}
@@ -86,19 +86,17 @@ export default function Productos() {
 
         <div className="md:w-2/3">
           {productoSeleccionado ? (
-            <div className="border rounded p-4 shadow bg-white">
-              <h2 className="text-xl font-semibold mb-2">
-                {productoSeleccionado.nombre}
-              </h2>
-              <p className="mb-4 text-gray-600">
-                <strong>Peso por unidad:</strong> {productoSeleccionado.peso_unidad}
+            <div className="border rounded p-4 shadow bg-white text-gray-900">
+              <h2 className="text-xl font-semibold mb-2">{productoSeleccionado.nombre}</h2>
+              <p className="mb-4">
+                <strong className="text-gray-800">Peso por unidad:</strong> {productoSeleccionado.peso_unidad}
               </p>
               <h3 className="font-medium mb-2">Almacenes:</h3>
               <ul className="list-disc pl-5">
                 {productoSeleccionado.almacenes.map((almacen) => (
-                  <li key={almacen.id} className="mb-2">
+                  <li key={almacen.id} className="mb-2 text-gray-900">
                     <p>
-                      <strong>{almacen.nombre}</strong> – Stock: {almacen.stock}
+                      <strong className="text-gray-800">{almacen.nombre}</strong> – Stock: {almacen.stock}
                     </p>
                     {almacen.ubicaciones.length > 0 ? (
                       <ul className="list-disc pl-5 text-sm text-gray-700">
