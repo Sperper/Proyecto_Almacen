@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 type Producto = {
   id: number;
   nombre: string;
-  precio: number;
   peso_unidad: number;
   almacenes: {
     id: number;
@@ -61,7 +60,6 @@ export default function Productos() {
         {productoSeleccionado ? (
           <div>
             <h1 className="text-2xl font-bold mb-2">{productoSeleccionado.nombre}</h1>
-            <p className="mb-1">Precio: €{productoSeleccionado.precio}</p>
             <p className="mb-1">Peso por unidad: {productoSeleccionado.peso_unidad} kg</p>
 
             <h2 className="text-lg font-semibold mt-4 mb-2">Almacenes:</h2>
