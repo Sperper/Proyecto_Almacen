@@ -1,4 +1,12 @@
 import type { Route } from "./+types/home";
+import { useEffect, useState } from "react";
+
+type Producto = {
+  id: number;
+  nombre: string;
+  precio: number;
+  stock: number;
+};
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,4 +16,6 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  
 }
+
